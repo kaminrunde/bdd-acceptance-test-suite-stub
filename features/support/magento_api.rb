@@ -56,9 +56,9 @@ class MagentoAPI
     @client.call('login', @api_user, @api_key)
   end
 
-  def self.cancel_test_orders(email_address,api_user,api_password)
-    $stdout.puts "\ncancelling test-orders (app_host: #{Capybara.app_host}"
-    magento = MagentoAPI.new(Capybara.app_host, api_user, api_password, :debug => false)
+  def self.cancel_test_orders(email_address,api_user,api_password,app_host)
+    $stdout.puts "\ncancelling test-orders (app_host: #{app_host})"
+    magento = MagentoAPI.new(app_host, api_user, api_password, :debug => false)
     order_list = magento.order_list({"customer_email" => {"eq" => "#{email_address}"}, "status" => {"neq" => "canceled"}})
 
     order_list.each do |order|
