@@ -3,6 +3,7 @@ Feature: Google Search
   I want to be able to get relevant results for my search query
   In order to find what I'm looking for
 
+	@selenium
     Scenario: Searching for a term
       Given I am on google.com
       When I enter "the answer to the question of life"
